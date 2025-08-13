@@ -27,7 +27,7 @@ pipeline {
     stage('Unit tests (pytest)') {
       steps {
         // Запускаем тесты внутри образа
-        sh "docker run --rm ${IMAGE} pytest -q"
+        sh "docker run --rm -w /app -e PYTHONPATH=/app ${IMAGE} python -m pytest -q"
       }
     }
 
